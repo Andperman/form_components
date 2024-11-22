@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { UserProvider } from './context/UserContext';
+import Head from './components/Head/Head';
+import Form from './components/Form/Form';
+import Card from './components/Card/Card';
+import './styles/styles.scss';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [users, setUsers] = useState([]); //inicializamos estado users que contiene todos los usuarios
+  const addUser = (newUser) => { //addUser es la funcion que pasamos como porps al formulario
+    // Agregar el nuevo usuario 
+    setUsers((prevUsers) => [...prevUsers, newUser]);
+};
 
-  return (
-    <>
+return (
+  <UserProvider>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+          <Head />
+          <Form onSubmit={addUser} /> {/* Pasar la función que agrega un usuario */}
+          {/* Mostrar todos los usuarios como tarjetas */}
+          {users.map((user, index) => (
+              <Card key={index} userData={user} /> //prop que le pasamos al componente card
+          ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+  </UserProvider>
+);
+};
 
-export default App
+export default App;

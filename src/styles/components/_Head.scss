@@ -1,0 +1,17 @@
+@import '../utils/variables.scss' ;
+@import '../utils/mixins.scss';
+
+.head-container {
+    background-color:rgb(175, 163, 255);
+    padding:18px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    
+    h1 {
+        margin-bottom: 8px;
+    }
+    p {
+        font-size: 1.1rem;
+    }
+}

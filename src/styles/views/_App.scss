@@ -1,0 +1,22 @@
+@use '../utils/variables.scss';
+@use '../utils/mixins.scss';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: hsl(279, 79%, 85%);
+    color: white;
+    padding: 16px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: white;
+    @include mixins.text-center; 
+}
+
